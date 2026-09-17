@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Carousel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+<style>
+  :root{
+    --ink: #2A241D;
+    --cream: #F5F0E4;
+    --brown: #6B4A34;
+  }
+
+  body{
+    margin: 0;
+    background: var(--cream);
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    padding: 4rem 6vw;
+  }
+
+  .carousel-wrap{
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .product-swiper{
+    overflow: hidden;
+  }
+
+  /* ONE slide rule now — no duplicate, no aspect-ratio, no forced centering */
+  .swiper-slide{
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(28,26,22,0.10);
+    padding: 1.5rem 1.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* NEW: fixed-height wrapper around the image */
+  .swiper-slide .image-wrap{
+  width: 100%;
+  height: 340px;              /* ← same for every card, adjust to taste */
+  background: #F0EDE4;        /* subtle backdrop behind the product photo */
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+
+  .swiper-slide .image-wrap img{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  .swiper-slide .body{
+    padding-top: 1.2rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(28,26,22,0.12);
+    flex-grow: 1;               /* pushes evenly if text lengths differ slightly */
+  }
+
+  .swiper-slide img{
+    display: block;
+    width: 100%;
+    max-width: 220px;   /* ← controls the image's actual size */
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 auto;      /* keeps it centered if it's narrower than the card */
+  }
+
+  .swiper-slide .body{
+    padding-top: 1.2rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(28,26,22,0.12); /* fixed: actual value now */
+  }
+
+  .swiper-slide .body h4{
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
+  }
+
+  .swiper-slide .body p{
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #8B8B84;
+    margin: 0;
+  }
+
+  /* Arrow buttons */
+  .swiper-button-prev,
+  .swiper-button-next{
+    color: var(--ink);
+    background: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 6px 16px rgba(28,26,22,0.14);
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after{
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .swiper-pagination{
+    position: static !important;
+    margin-top: 1.2rem;
+  }
+
+  .swiper-pagination-bullet-active{
+    background: var(--brown);
+  }
+
+</style>
+</head>
+<body>
+    <!-- Colour-Coded Waste System -->
+    <section class="pad bg-light">
+        <span class="eyebrow">Colour-Coded Waste System</span>
+        <h2>Colour-Coded for the Bush</h2>
+        <p class="lede">Waste separation should be simple enough to understand at a glance. PAWFREE bags use a
+            dedicated colour system to identify waste streams without opening the bag.</p>
+        <p class="lede"><b>Bush-Sensitive Colours</b> &mdash; our colour palette is deliberately selected to be
+            sensitive to the natural bush environment. Rather than introducing bright, visually intrusive colours
+            into safari landscapes, PAWFREE uses earth-inspired, muted and natural tones that complement the
+            environments where safari companies operate.</p>
+
+        <div class="carousel-wrap">
+          <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+              <div class="image-wrap">
+                <img src="beige.png" alt="Beige — Glass Bottles">
+              </div>
+                <div class="body">
+                  <h3>Beige &mdash; Glass Bottles</h3>
+                  <p>A natural, understated tone that blends comfortably with earthy safari environments.</p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+              <div class="image-wrap">
+                <img src="brown.png" alt="Product image 2">
+              </div>
+                <div class="body">
+                  <h3>Brown &mdash; Plastic</h3>
+                  <p>An earth-inspired colour supporting easy identification while remaining visually discreet.</p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+              <div class="image-wrap">
+                <img src="grey.png" alt="Product image 3">
+              </div>
+                <div class="body">
+                  <h3>Grey &mdash; Aluminium / Cans</h3>
+                  <p>A neutral industrial tone that communicates metal without becoming visually dominant.</p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+              <div class="image-wrap">
+                <img src="black.png" alt="Product image 4">
+              </div>
+                <div class="body">
+                  <h3>Black &mdash; Paper</h3>
+                  <p>A clean, professional neutral that provides strong identification and branding.</p>
+                </div>
+              </div>
+              </div>
+
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <p class="flow-tagline">Visible enough for operational efficiency. Subtle enough for the wilderness.</p>
+        <p class="lede" style="text-align:center; max-width:700px; margin-top:20px;">The colour-coded system improves sorting accuracy, reduces contamination and helps collection and recycling teams identify materials quickly.</p>
+    </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+  <script>
+          //--------- SITE HEADER --------------
+          const productSwiper = new Swiper('.product-swiper', {
+            slidesPerView: 3,
+            spaceBetween: 24,
+            loop: true,
+            centeredSlides: true,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+              0:   { slidesPerView: 1 },
+              700: { slidesPerView: 2 },
+              1000:{ slidesPerView: 3 },
+            },
+          });
+
+        //--------- SITE HEADER --------------
+        const header = document.getElementById('siteHeader');
+        let lastScrollY = window.scrollY;
+        const threshold = 50;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (window.scrollY > threshold) { header.classList.remove('visible'); }
+            else if (currentScrollY > lastScrollY) { header.classList.remove('visible'); }
+            else if (currentScrollY < lastScrollY) { header.classList.add('visible'); }
+            lastScrollY = currentScrollY;
+        });
+  </script>
+</body>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col footer-brand">
+            <div class="footer-logo-row"><img src="logo.png" alt="PAWFREE Logo" class="footer-logo"></div>
+            <p><b style="font-size:15px;">A Sustainable Waste <br> Management Solution.</b></p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="parallax-demo.html">Home</a></li>
+                <li><a href="about_demo.html">About</a></li>
+                <li><a href="solutions.html" class="active">Solutions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+                <li>Email: enquiries@pawfree.com</li>
+                <li>Phone: +XXX XXX XXXX</li>
+                <li>Location: Maun, Botswana</li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://wa.me/26775677508?text=Hi%20PAWFREE%2C%20I%27d%20like%20to%20know%20more" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 PAWFREE. All rights reserved.</p>
+        <p class="designer-credit">Designed by <a href="https://yourportfolio.com" target="_blank">ra'Oraph</a></p>
+    </div>
+</footer>
+</html>

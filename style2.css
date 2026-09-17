@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Common Section Styling */
+section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Video Parallax Styling */
+.parallax-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+}
+
+/* Image Parallax Styling */
+.image-section {
+    background-image: url('your-image-file.jpg'); /* */
+    background-size: cover; /* */
+    background-position: center; /* */
+    background-attachment: fixed; /* */
+    background-repeat: no-repeat; /* */
+}
+
+/* Foreground Content Styling */
+.content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 8px;
+}
+
+/* Standard Content Section */
+.normal-section {
+    height: 100vh;
+    background-color: #222;
+    color: #fff;
+    flex-direction: column;
+}

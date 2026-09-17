@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | PAWFREE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* ---------- HEADER ----------*/
+    #siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, background 0.4s ease, transform 0.4s ease;
+    }
+
+    .logo-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: nowrap;
+    }
+
+    #siteHeader .logo img {
+        height: 70px;
+        width: auto;
+        display: inline-block;
+    }
+
+    #siteHeader .logo-placeholder {
+        color: #fff;
+        font-weight: bold;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        color: #fff;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    #siteHeader nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-20%);
+    }
+
+    #siteHeader nav ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 25px;
+        margin: 0;
+        padding: 0;
+    }
+
+    #siteHeader nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        padding-bottom: 6px;
+    }
+
+    #siteHeader nav a.active {
+        border-bottom: 2px solid #fff;
+    }
+
+    #siteHeader nav a:hover {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    /* ---------- PAGE BANNER ---------- */
+    .page-banner {
+        position: relative;
+        height: 60vh;
+        min-height: 380px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?w=1600');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .page-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+    }
+
+    .curve-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 2;
+    }
+
+    .curve-divider svg {
+        display: block;
+        width: 100%;
+        height: 50px;
+    }
+
+    .curve-divider path {
+        fill: #e1e0e0;
+    }
+
+    .page-banner .content {
+        position: relative;
+        padding-left: 70px;
+        z-index: 1;
+        color: #fff;
+        text-align: left;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .page-banner .content h1 {
+        font-size: 3rem;
+    }
+
+    /* ---------- NORMAL SECTION ---------- */
+    .normal-section {
+        padding: 100px 30px;
+        text-align: center;
+        background: rgb(226, 226, 226);
+        scroll-margin-top: 90px;
+    }
+
+    .normal-section h2 {
+        margin-bottom: 15px;
+        font-size: 3rem;
+    }
+
+    .normal-section p {
+        padding-left: 90px;
+        text-align: left;
+        font-size: 20px;
+        line-height: 30px;
+        color: #444444;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .normal-section .menu-btn {
+        display: inline-block;
+        text-decoration: none;
+        background: #a2a2a2;
+        color: #000;
+        border: 1px solid #fffdfd;
+        border-radius: 50px;
+        padding: 14px 40px;
+        margin: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .normal-section .menu-btn:hover {
+        background: #b6b6b6;
+        color: #fff;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* ---------- SERVICE CARDS ---------- */
+    .services-section {
+        background: #1B4B4F;
+        padding: 70px 20px;
+        scroll-margin-top: 90px;
+    }
+
+    .services-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .service-item {
+        flex: 1;
+        min-width: 240px;
+        color: #fff;
+    }
+
+    .service-item i {
+        font-size: 44px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .service-item h3 {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .service-item p {
+        font-size: 14px;
+        color: #ddd;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 700px) {
+        .services-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    /* ---------- PARTNER SECTION ---------- */
+    .partner-section {
+        padding: 100px 30px;
+        text-align: center;
+        background: #ffffff;
+        scroll-margin-top: 90px;
+    }
+
+    .partner-section h2 {
+        margin-bottom: 15px;
+        font-size: 3rem;
+    }
+
+    .partner-section p {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 30px;
+        color: #444444;
+    }
+
+    /*----------- FOOTER SECTION ------------*/
+    .site-footer {
+        background-color: #1B4B4F;
+        color: #ffffff;
+        padding: 60px 20px 20px;
+        }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        }
+
+    .footer-logo {
+        height: 55px;
+        width: auto;
+        margin: 0 auto 10px 0;
+        display: block;
+    }
+
+    .footer-logo-row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .footer-col {
+        flex: 1;
+        min-width: 180px;
+    }
+
+    .footer-col h3, .footer-col h4 {
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+        color: #d8c8bd;
+        font-size: 14px;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #d8c8bd;
+    }
+
+    .footer-col ul li a {
+        color: #d8c8bd;
+        text-decoration: none;
+    }
+
+    .footer-col ul li a:hover {
+        color: #ffffff;
+    }
+
+    .footer-socials {
+        display: flex;
+        gap: 15px;
+        font-size: 20px;
+    }
+
+    .footer-socials a {
+        color: #ffffff;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 13px;
+        color: #a89285;
+    }
+
+    .footer-bottom .designer-credit {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #a89285;
+    }
+
+    .designer-credit a {
+        color: #d8c8bd;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .designer-credit a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    .active {
+        color: #ffffff;
+        font-weight: 700;
+        pointer-events: none;
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="siteHeader">
+        <div class="logo-group">
+            <div class="logo">
+                <img src="logo.png" alt="Pawfree Logo">
+            </div>
+            <p class="tagline">A Sustainable Waste Management Solution</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="parallax-demo.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="content">
+            <h1>OUR SOLUTIONS</h1>
+            <h2>Waste systems built for remote hospitality</h2>
+        </div>
+        <div class="curve-divider">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,0 C480,120 960,120 1440,0 L1440,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Explore Our Solutions -->
+    <section class="normal-section" id="explore-section">
+        <h2>Explore Our Solutions</h2>
+        <p>Every lodge and camp faces the same challenge: no municipal collection, high transport costs, and
+            fragile ecosystems that can't absorb single-use waste. PAWFREE closes that gap with a full,
+            end-to-end system &mdash; from reusable packaging on delivery, to on-site sorting, to transport
+            that connects your waste stream directly to recycling partners.</p>
+    </section>
+
+    <!-- Service Cards -->
+    <section class="services-section" id="services-cards">
+        <div class="services-container">
+
+            <div class="service-item">
+                <i class="fa-solid fa-box-open"></i>
+                <h3>Reusable Packaging</h3>
+                <p>Durable, returnable packaging that replaces single-use plastic on every delivery run.</p>
+            </div>
+
+            <div class="service-item">
+                <i class="fa-solid fa-recycle"></i>
+                <h3>Waste Sorting Systems</h3>
+                <p>On-site sorting stations and staff training so recyclables never end up landfilled.</p>
+            </div>
+
+            <div class="service-item">
+                <i class="fa-solid fa-truck"></i>
+                <h3>Collection &amp; Transport</h3>
+                <p>Scheduled pickups that move sorted waste out of remote camps efficiently and reliably.</p>
+            </div>
+
+            <div class="service-item">
+                <i class="fa-solid fa-handshake"></i>
+                <h3>Recycling Partnerships</h3>
+                <p>Direct connections to recycling partners, so your waste stream becomes someone else's supply.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Partner with PAWFREE -->
+    <section class="partner-section" id="partner-section">
+        <h2>Partner with PAWFREE</h2>
+        <p>Whether you run a single lodge or a portfolio of camps, we'll design a waste system around your
+            operation &mdash; not the other way around. Get in touch and we'll walk you through what it looks
+            like for your site.</p>
+        <a href="contact.html" class="menu-btn" aria-label="Partner with PAWFREE" style="background:#1B4B4F; color:#fff; border-color:#1B4B4F;">Get In Touch</a>
+    </section>
+
+    <script>
+        const header = document.getElementById('siteHeader');
+        let lastScrollY = window.scrollY;
+        const threshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (window.scrollY > threshold) {
+                header.classList.remove('visible');
+            } else if (currentScrollY > lastScrollY) {
+                header.classList.remove('visible');
+            } else if (currentScrollY < lastScrollY) {
+                header.classList.add('visible');
+            }
+
+            lastScrollY = currentScrollY;
+        });
+    </script>
+
+</body>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col footer-brand">
+        <div class="footer-logo-row">
+            <img src="logo.png" alt="PAWFREE Logo" class="footer-logo">
+        </div>
+        <p> <b style="font-size: 15px;">A Sustainable Waste <br> Management Solution.</b></p>
+        </div>
+
+        <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+            <li><a href="parallax-demo.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </div>
+
+        <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+            <li>Email: enquiries@pawfree.com</li>
+            <li>Phone: +XXX XXX XXXX</li>
+            <li>Location: Maun, Botswana</li>
+        </ul>
+        </div>
+
+        <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://wa.me/26775677508?text=Hi%20PAWFREE%2C%20I%27d%20like%20to%20know%20more" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+    <p>&copy; 2026 PAWFREE. All rights reserved.</p>
+    <p class="designer-credit">Designed by <a href="https://yourportfolio.com" target="_blank">ra'Oraph</a></p>
+    </div>
+
+</footer>
+</html>

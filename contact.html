@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | PAWFREE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* ---------- HEADER ----------*/
+    #siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, background 0.4s ease, transform 0.4s ease;
+    }
+
+    .logo-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: nowrap;
+    }
+
+    #siteHeader .logo img {
+        height: 70px;
+        width: auto;
+        display: inline-block;
+    }
+
+    #siteHeader .logo-placeholder {
+        color: #fff;
+        font-weight: bold;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        color: #fff;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    #siteHeader nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-20%);
+    }
+
+    #siteHeader nav ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 25px;
+        margin: 0;
+        padding: 0;
+    }
+
+    #siteHeader nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        padding-bottom: 6px;
+    }
+
+    #siteHeader nav a.active {
+        border-bottom: 2px solid #fff;
+    }
+
+    #siteHeader nav a:hover {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    /* ---------- PAGE BANNER ---------- */
+    .page-banner {
+        position: relative;
+        height: 60vh;
+        min-height: 640px; /*height of banner backgroun*/
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-image: url('tree.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .page-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+    }
+
+    .curve-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 2;
+    }
+
+    .curve-divider svg {
+        display: block;
+        width: 100%;
+        height: 50px;
+    }
+
+    .curve-divider path {
+        fill: #e1e0e0;
+    }
+
+    .page-banner .content {
+        position: relative;
+        padding-left: 70px;
+        z-index: 1;
+        color: #fff;
+        text-align: left;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .page-banner .content h1 {
+        font-size: 3rem;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+/* ---------- COMPANY / GRAS LERA GROUP PANEL (full-width, centered) ---------- */
+  .company-panel{
+    background: rgb(226, 226, 226);
+    color: var(--ink);
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .company-brand{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .company-brand img{ height: 48px; width: auto; display: block; }
+
+  .company-panel h2{
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .company-panel p{
+    font-size: 1.5rem;
+    color: var(--ink);
+    max-width: 900px;
+    margin: 0 auto 1.8rem;
+  }
+
+  .company-facts{
+    border-top: 1px solid rgba(28,26,22,0.18);
+    padding-top: 1.5rem;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .company-facts dl{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem 1.4rem;
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.92rem;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .company-facts dt{ color: var(--grey); }
+  .company-facts dd{ color: var(--ink); }
+  .company-facts a{ color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .company-facts a:hover{ color: var(--brown); }
+
+  .pillars{
+    margin-top: 2rem;
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--brown);
+  }
+  .pillars span{ color: var(--grey); }
+
+    /* ---------- CONTACT SECTION ---------- */
+    .contact-section {
+        background: rgb(226, 226, 226);
+        padding: 80px 30px;
+    }
+
+    .contact-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 60px;
+    }
+
+    .contact-info, .contact-form {
+        flex: 1;
+        min-width: 280px;
+    }
+
+    .contact-info h2, .contact-form h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        color: #222;
+    }
+
+    .contact-info p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #444;
+        margin-bottom: 25px;
+    }
+
+    .contact-info ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 25px;
+    }
+
+    .contact-info ul li {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .contact-info ul li i {
+        color: #1B4B4F;
+        width: 20px;
+        text-align: center;
+    }
+
+    .contact-info .footer-socials {
+        display: flex;
+        gap: 18px;
+        font-size: 22px;
+    }
+
+    .contact-info .footer-socials a {
+        color: #1B4B4F;
+    }
+
+    .contact-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-form label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-family: inherit;
+    }
+
+    .contact-form textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .contact-form .menu-btn {
+        display: inline-block;
+        text-decoration: none;
+        background: #1B4B4F;
+        color: #fff;
+        border: 1px solid #1B4B4F;
+        border-radius: 50px;
+        padding: 14px 40px;
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: background 0.3s ease, color 0.3s ease;
+        align-self: flex-start;
+    }
+
+    .contact-form .menu-btn:hover {
+        background: #143638;
+    }
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testimonials{
+    background: #bfbebe;
+    padding: 5rem 6vw;
+    text-align: center;
+    }
+
+    .testimonials h2{
+    font-weight: 400;
+    font-size: 2.1rem;
+    color: var(--ink);
+    margin-bottom: 4.5rem !important;
+    }
+
+    .testimonial-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+    padding-top: 2rem; /*sapce on top of cards*/
+    }
+
+    @media (max-width: 860px){
+    .testimonial-grid{ grid-template-columns: 1fr; }
+    }
+
+    .testimonial-card{
+    background: #FFFFFF;
+    border: 1px solid rgba(28,26,22,0.08);
+    border-top: none;
+    border-radius: 10px;
+    padding: 2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 28px rgba(28,26,22,0.10);
+    }
+
+    .testimonial-person{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.3rem;
+    border-bottom: 1px solid rgba(28,26,22,0.14);
+    }
+
+    .testimonial-avatar{
+    width: 80px;   /* ← increase this to make the photo bigger */
+    height: 80px;  /* ← and this, keep it equal to width */
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    }
+
+    .testimonial-person-info{
+    display: flex;
+    flex-direction: column;
+    }
+
+    .testimonial-text{
+    font-size: 1rem;
+    color: var(--ink);
+    flex-grow: 1;
+    }
+
+    .testimonial-name{
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    }
+
+    .testimonial-role{
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    color: var(--brown);
+    margin-top: 0.2rem;
+    }
+
+    /* ---------- MAP SECTION ---------- */
+    .map-section {
+        height: 400px;
+        width: 100%;
+    }
+
+    .map-section iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+
+    /*----------- FOOTER SECTION ------------*/
+    .site-footer {
+        background-color: #1B4B4F;
+        color: #ffffff;
+        padding: 60px 20px 20px;
+        }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        }
+
+    .footer-logo {
+        height: 55px;
+        width: auto;
+        margin: 0 auto 10px 0;
+        display: block;
+    }
+
+    .footer-logo-row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .footer-col {
+        flex: 1;
+        min-width: 180px;
+    }
+
+    .footer-col h3, .footer-col h4 {
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+        color: #d8c8bd;
+        font-size: 14px;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #d8c8bd;
+    }
+
+    .footer-col ul li a {
+        color: #d8c8bd;
+        text-decoration: none;
+    }
+
+    .footer-col ul li a:hover {
+        color: #ffffff;
+    }
+
+    .footer-socials {
+        display: flex;
+        gap: 15px;
+        font-size: 20px;
+    }
+
+    .footer-socials a {
+        color: #ffffff;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 13px;
+        color: #a89285;
+    }
+
+    .footer-bottom .designer-credit {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #a89285;
+    }
+
+    .designer-credit a {
+        color: #d8c8bd;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .designer-credit a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    .active {
+        color: #ffffff;
+        font-weight: 700;
+        pointer-events: none;
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="siteHeader">
+        <div class="logo-group">
+            <div class="logo">
+                <img src="logo.png" alt="Pawfree Logo">
+            </div>
+            <p class="tagline">A Sustainable Waste Management Solution</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="parallax-demo.html">Home</a></li>
+                <li><a href="about_demo.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="content">
+            <h1>GET IN TOUCH</h1>
+            <h2>Let's design a waste system for your camp</h2>
+            <h2>One step closer to a <b>Waste Free</b> world.</h2>
+
+        </div>
+        <div class="curve-divider">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,0 C480,120 960,120 1440,0 L1440,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section>
+    <div class="company-panel">
+      <div class="company-brand">
+        <img src="gras.png" alt="GRAS LERA GROUP logo">
+        <h2>GRAS LERA GROUP</h2>
+      </div>
+      <p>PAWFREE is brought to you by GRAS LERA GROUP (Pty) Ltd — the registered company designing, managing and growing this circular waste and reusable packaging system for safari camps, remote hospitality operations and environmentally responsible businesses.</p>
+
+      <div class="company-facts">
+        <dl>
+          <dt>Company</dt>
+          <dd>GRAS LERA GROUP (Pty) Ltd</dd>
+
+          <dt>Trading as</dt>
+          <dd>PAWFREE</dd>
+
+          <dt>Email</dt>
+          <dd><a href="mailto:pawfreeenquiries@gmail.com">pawfreeenquiries@gmail.com</a></dd>
+        </dl>
+      </div>
+
+      <div class="pillars">REDUCE <span>•</span> REUSE <span>•</span> RECOVER <span>•</span> PROTECT</div>
+    </div>
+    </section>
+    
+    <!-- Contact Info + Form -->
+    <section class="contact-section">
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>Whether you run a safari camp, manage a supply chain, or operate a recycling facility — reach 
+                    out and we'll help you build a more circular system.</p>
+                <p>Have a question about our reusable packaging system, collection schedules, or partnering
+                    with PAWFREE? Send us a message or reach out directly &mdash; we usually reply within one
+                    business day.</p>
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i> enquiries@pawfree.com</li>
+                    <li><i class="fa-solid fa-phone"></i> +XXX XXX XXXX</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Maun, Botswana</li>
+                </ul>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://wa.me/26775677508?text=Hi%20PAWFREE%2C%20I%27d%20like%20to%20know%20more" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form action="#" method="POST">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div>
+                        <label for="lodge">Lodge / Camp Name (optional)</label>
+                        <input type="text" id="lodge" name="lodge" placeholder="e.g. Okavango Delta Camp">
+                    </div>
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us a bit about what you need..." required></textarea>
+                    </div>
+                    <button type="submit" class="menu-btn">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h1>Trusted by camps, schools and waste partners</h1>
+        <div class="testimonial-grid">
+
+            <div class="testimonial-card">
+            <div class="testimonial-person">
+                <img class="testimonial-avatar" src="kgosi.jpg" alt="Kgosi Sediba">
+                <div class="testimonial-person-info">
+                <div class="testimonial-name">Kgosi Sediba</div>
+                <div class="testimonial-role">Camp Manager, Okavango Safari Camp</div>
+                </div>
+            </div>
+            <p class="testimonial-text">"PAWFREE completely changed how our camp handles waste. Sorting is simple now, and we've cut single-use packaging across the whole site."</p>
+            </div>
+
+            <div class="testimonial-card">
+            <div class="testimonial-person">
+                <img class="testimonial-avatar" src="lindiwe.jpg" alt="Lindiwe Dube">
+                <div class="testimonial-person-info">
+                <div class="testimonial-name">Lindiwe Dube</div>
+                <div class="testimonial-role">Operations Lead, Green Loop Waste Collection</div>
+                </div>
+            </div>
+            <p class="testimonial-text">"Working with PAWFREE streamlined our collection routes. Recyclables arrive already sorted, which saves us real time and money."</p>
+            </div>
+
+            <div class="testimonial-card">
+            <div class="testimonial-person">      
+                <img class="testimonial-avatar" src="thabo.jpg" alt="Thabo Molefe">
+                <div class="testimonial-person-info">
+                    <div class="testimonial-name">Thabo Molefe</div>
+                    <div class="testimonial-role">Facilities Head, Riverside School</div>
+                </div>
+            </div>
+            <p class="testimonial-text">"Our students learn about recycling hands-on now. The PAWFREE system made it easy to set up a proper waste program on campus."</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Map -->
+    <section class="map-section">
+        <iframe
+            src="https://www.google.com/maps?q=Maun,Botswana&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="PAWFREE location map">
+        </iframe>
+    </section>
+
+    <script>
+        const header = document.getElementById('siteHeader');
+        let lastScrollY = window.scrollY;
+        const threshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (window.scrollY > threshold) {
+                header.classList.remove('visible');
+            } else if (currentScrollY > lastScrollY) {
+                header.classList.remove('visible');
+            } else if (currentScrollY < lastScrollY) {
+                header.classList.add('visible');
+            }
+
+            lastScrollY = currentScrollY;
+        });
+    </script>
+
+</body>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col footer-brand">
+        <div class="footer-logo-row">
+            <img src="logo.png" alt="PAWFREE Logo" class="footer-logo">
+        </div>
+        <p> <b style="font-size: 15px;">A Sustainable Waste <br> Management Solution.</b></p>
+        </div>
+
+        <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+            <li><a href="parallax-demo.html">Home</a></li>
+            <li><a href="about_demo.html">About</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        </div>
+
+        <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+            <li>Email: enquiries@pawfree.com</li>
+            <li>Phone: +XXX XXX XXXX</li>
+            <li>Location: Maun, Botswana</li>
+        </ul>
+        </div>
+
+        <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://wa.me/26775677508?text=Hi%20PAWFREE%2C%20I%27d%20like%20to%20know%20more" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+    <p>&copy; 2026 PAWFREE. All rights reserved.</p>
+    <p class="designer-credit">Designed by <a href="https://yourportfolio.com" target="_blank">ra'Oraph</a></p>
+    </div>
+
+</footer>
+</html>
